@@ -1,0 +1,21 @@
+{:paths ["src" "resources"]
+ :deps {org.clojure/clojure {:mvn/version "1.11.1"}
+        metosin/jsonista {:mvn/version "0.3.8"}
+        metosin/reitit {:mvn/version "0.7.0"}
+        metosin/reitit-malli {:mvn/version "0.7.0"}
+        metosin/reitit-pedestal {:mvn/version "0.7.0"} 
+        io.pedestal/pedestal.service {:mvn/version "0.7.0-beta-2"}
+        io.pedestal/pedestal.jetty {:mvn/version "0.7.0-beta-2"}
+        ch.qos.logback/logback-classic {:mvn/version "1.5.6"}}
+ :aliases
+ {:run-m {:main-opts ["-m" "example.core"]}
+  :run-x {:ns-default example.core
+          :exec-fn greet
+          :exec-args {:name "Clojure"}}
+  :build {:deps {io.github.clojure/tools.build
+                 {:mvn/version "0.9.6"}}
+          :ns-default build}
+  :test {:extra-paths ["test"]
+         :extra-deps {org.clojure/test.check {:mvn/version "1.1.1"}
+                      io.github.cognitect-labs/test-runner
+                      {:git/tag "v0.5.1" :git/sha "dfb30dd"}}}}}
